@@ -7,7 +7,7 @@ ARG CORENLP_DATE_VERSION='2018-10-05'
 
 RUN wget -qO- "https://nlp.stanford.edu/software/stanford-corenlp-full-${CORENLP_DATE_VERSION}.zip" | bsdtar -xvf-
 
-RUN wget http://nlp.stanford.edu/software/stanford-chinese-corenlp-${CORENLP_DATE_VERSION}-models.jar -O stanford-corenlp-full-${CORENLP_DATE_VERSION}/stanford-chinese-corenlp-${CORENLP_DATE_VERSION}-models.jar
+RUN wget -q http://nlp.stanford.edu/software/stanford-chinese-corenlp-${CORENLP_DATE_VERSION}-models.jar -O stanford-corenlp-full-${CORENLP_DATE_VERSION}/stanford-chinese-corenlp-${CORENLP_DATE_VERSION}-models.jar
 
 WORKDIR stanford-corenlp-full-${CORENLP_DATE_VERSION}
 
