@@ -1,15 +1,15 @@
 # vim:set ft=dockerfile:
-FROM openjdk:11-jre-slim
+FROM openjdk:14-slim
 
 RUN apt update && apt -y install wget libarchive-tools && apt -y autoremove && apt -y clean && rm -rf /var/lib/apt/lists/* 
 
-ARG CORENLP_DATE_VERSION='2018-10-05'
+ARG CORENLP_VERSION='4.0.0'
 
-RUN wget -qO- "https://nlp.stanford.edu/software/stanford-corenlp-full-${CORENLP_DATE_VERSION}.zip" | bsdtar -xvf-
+RUN wget -qO- "http://nlp.stanford.edu/software/stanford-corenlp-${CORENLP_VERSION}.zip" | bsdtar -xvf-
 
-RUN wget -q http://nlp.stanford.edu/software/stanford-chinese-corenlp-${CORENLP_DATE_VERSION}-models.jar -O stanford-corenlp-full-${CORENLP_DATE_VERSION}/stanford-chinese-corenlp-${CORENLP_DATE_VERSION}-models.jar
+RUN wget -q http://nlp.stanford.edu/software/stanford-corenlp-${CORENLP_VERSION}-models-chinese.jar -O stanford-corenlp-${CORENLP_VERSION}/stanford-corenlp-${CORENLP_VERSION}-models-chinese.jar
 
-WORKDIR stanford-corenlp-full-${CORENLP_DATE_VERSION}
+WORKDIR stanford-corenlp-${CORENLP_VERSION}
 
 RUN export CLASSPATH="`find . -name '*.jar'`"
 
