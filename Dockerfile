@@ -3,7 +3,7 @@ FROM openjdk:15-slim
 
 RUN apt update && apt -y install wget libarchive-tools && apt -y autoremove && apt -y clean && rm -rf /var/lib/apt/lists/* 
 
-ARG CORENLP_VERSION='4.2.0'
+ARG CORENLP_VERSION='4.2.2'
 
 RUN wget -qO- "https://nlp.stanford.edu/software/stanford-corenlp-${CORENLP_VERSION}.zip" | bsdtar -xvf-
 
