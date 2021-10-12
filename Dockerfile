@@ -5,9 +5,10 @@ RUN apt update && apt -y install wget libarchive-tools && apt -y autoremove && a
 
 ARG CORENLP_VERSION='4.2.2'
 
-RUN wget -qO- "https://nlp.stanford.edu/software/stanford-corenlp-${CORENLP_VERSION}.zip" | bsdtar -xvf-
+# Stanford can't afford decent servers/bandwidth apparently...
+RUN wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 --tries=100 -O- "https://nlp.stanford.edu/software/stanford-corenlp-${CORENLP_VERSION}.zip" | bsdtar -xvf-
 
-RUN wget -q http://nlp.stanford.edu/software/stanford-corenlp-${CORENLP_VERSION}-models-chinese.jar -O stanford-corenlp-${CORENLP_VERSION}/stanford-corenlp-${CORENLP_VERSION}-models-chinese.jar
+RUN wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 --tries=100 http://nlp.stanford.edu/software/stanford-corenlp-${CORENLP_VERSION}-models-chinese.jar -O stanford-corenlp-${CORENLP_VERSION}/stanford-corenlp-${CORENLP_VERSION}-models-chinese.jar
 
 WORKDIR stanford-corenlp-${CORENLP_VERSION}
 
