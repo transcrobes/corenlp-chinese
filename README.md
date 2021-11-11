@@ -19,7 +19,7 @@ Three ENV variables can be set to control the running CoreNLP process and should
 
 `PORT`: Default listen 9001 
 
-`CORENLP_CHINESE_SEGMENTER`: Default ctb.gz, can also be pku.gz for pku or ctb.small.gz for a memory reduced Chinese Treebank version
+`CORENLP_CHINESE_SEGMENTER`: Default ctb.small.gz, memory reduced Chinese Treebank version, can also be pku.gz for pku or ctb.gz for the full/upstream default CTB version, though typically _at least_ 2500MB mem is required for those
 
 `CORENLP_THREADS`: Default 2, number of java threads for the process
 

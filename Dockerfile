@@ -3,12 +3,12 @@ FROM openjdk:15-slim
 
 RUN apt update && apt -y install wget libarchive-tools && apt -y autoremove && apt -y clean && rm -rf /var/lib/apt/lists/* 
 
-ARG CORENLP_VERSION='4.2.2'
+ARG CORENLP_VERSION='4.3.1'
 
 # Stanford can't afford decent servers/bandwidth apparently...
-RUN wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 --tries=100 -O- "https://nlp.stanford.edu/software/stanford-corenlp-${CORENLP_VERSION}.zip" | bsdtar -xvf-
+RUN wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 --tries=100 -O- "https://huggingface.co/stanfordnlp/CoreNLP/resolve/v${CORENLP_VERSION}/stanford-corenlp-latest.zip" | bsdtar -xvf-
 
-RUN wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 --tries=100 http://nlp.stanford.edu/software/stanford-corenlp-${CORENLP_VERSION}-models-chinese.jar -O stanford-corenlp-${CORENLP_VERSION}/stanford-corenlp-${CORENLP_VERSION}-models-chinese.jar
+RUN wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 --tries=100 https://huggingface.co/stanfordnlp/corenlp-chinese/resolve/v${CORENLP_VERSION}/stanford-corenlp-models-chinese.jar -O stanford-corenlp-${CORENLP_VERSION}/stanford-corenlp-${CORENLP_VERSION}-models-chinese.jar
 
 WORKDIR stanford-corenlp-${CORENLP_VERSION}
 
