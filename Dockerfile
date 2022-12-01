@@ -1,9 +1,9 @@
 # vim:set ft=dockerfile:
-FROM openjdk:15-slim
+FROM eclipse-temurin:17
 
-RUN apt update && apt -y install wget libarchive-tools && apt -y autoremove && apt -y clean && rm -rf /var/lib/apt/lists/* 
+RUN apt update && apt -y install wget libarchive-tools && apt -y autoremove && apt -y clean && rm -rf /var/lib/apt/lists/*
 
-ARG CORENLP_VERSION='4.3.1'
+ARG CORENLP_VERSION='4.5.1'
 
 # Stanford can't afford decent servers/bandwidth apparently...
 RUN wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 --tries=100 -O- "https://huggingface.co/stanfordnlp/CoreNLP/resolve/v${CORENLP_VERSION}/stanford-corenlp-latest.zip" | bsdtar -xvf-

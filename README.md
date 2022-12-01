@@ -1,4 +1,4 @@
-# CoreNLP-English
+# CoreNLP-Chinese
 
 This repo creates standard images of Stanford's CoreNLP with the default Chinese model.
 
@@ -17,7 +17,7 @@ Three ENV variables can be set to control the running CoreNLP process and should
 
 `JAVA_XMX`: Default 700m (megabytes)
 
-`PORT`: Default listen 9001 
+`PORT`: Default listen 9001
 
 `CORENLP_CHINESE_SEGMENTER`: Default ctb.small.gz, memory reduced Chinese Treebank version, can also be pku.gz for pku or ctb.gz for the full/upstream default CTB version, though typically _at least_ 2500MB mem is required for those
 
@@ -29,4 +29,4 @@ See [the Transcrobes website](https://transcrob.es/page/contribute) for more inf
 
 ## External Open Source code used in/by this repo and licences
 
-This repo contains code/resources for building and pushing Docker container images of Stanford's CoreNLP running on openjdk:15-slim base images. It does not directly include any of the code from those projects.
+This repo contains code/resources for building and pushing Docker container images of Stanford's CoreNLP running on eclipse-temurin:17 base images. It does not directly include any of the code from those projects.
